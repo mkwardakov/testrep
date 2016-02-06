@@ -1,0 +1,52 @@
+{
+	"uri": "http://michael-35411.herokuapp.com/api/payment",
+	"database": {
+		"host": "ds059215.mongolab.com",
+		"port": 59215,
+		"db": "heroku_ftfzdmb9",
+		"user": "heroku_ftfzdmb9",
+		"password": "48u7eotcssqek0i9sqq053dcdr"
+	},
+	"amex": {
+		"number": "377127687066544",
+		"expM": "03",
+		"expY": "2021",
+		"cvv": "",
+		"first name": "",
+		"last name": ""
+	},
+	"visa": {
+		"number": "4032039575052396",
+		"expM": "03",
+		"expY": "2021",
+		"cvv": "",
+		"first name": "",
+		"last name": ""
+	},
+	"mc": {
+		"number": "5110927212387377",
+		"expM": "03",
+		"expY": "2021",
+		"cvv": "",
+		"first name": "",
+		"last name": ""
+	},
+	"functional tests": [
+		{
+			"case": 1,
+			"card type": "amex",
+			"currency": "USD",
+			"amount": 1,
+			"expected": "201"
+		}
+	],
+	"negative tests": [
+		{
+			"case": 1,
+			"card type": "amex",
+			"currency": "USD",
+			"amount": 0,
+			"expected": ""
+		}
+	]
+}
