@@ -26,7 +26,9 @@ Tests are ready to use in CI tools: TeamCity, Jenkins
 
 ###Functional tests
 Each case: Make payment
+
 Tests:
+
 1. Check reply code
 2. Check reply message
 3. Check order data is in DB
@@ -36,7 +38,12 @@ There are 13 cases: 1 is for AmEx, VISA and MC have 6 each
 
 ###Negative tests
 Set of negative tests: wrong values in payload and 5 AmEx cases with improper currency
+
 Each case: Make payment
+
 Tests:
+
 1. Check reply code
 2. Check reply message
+
+This section has 12 cases.
