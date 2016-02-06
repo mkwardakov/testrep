@@ -7,41 +7,36 @@ https://github.com/HQInterview/Backend-Automation-Test-Engineer
 * Linux with rvm
 * Ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-linux]
 * Used gems:
- * json (1.8.1)
- * minitest (5.4.3)
- * test-unit (3.0.8)
- * rspec-3.4.0
+ * json 1.8.1
+ * mongo 2.2.2
+ * rest-client 1.8.0
+ * rspec 3.4.0
+ * faker 1.6.1
+ * logger 1.2.8
 
 ## Running tests
-Test cases and all mandatory data is described in scenario.json
+Test cases and all mandatory data is described in _scenario.json_
 Test are to be run via:
 ```
 rspec tests.rb
 ```
-Tests are ready to use in CI:
-* When deployment ready, TeamCity/Jenkins deploys latest automated tests from repository
-* Then starts Docker container with shared volume with tests and run them
-* CI tool gets test results via rspec runner
+Tests are ready to use in CI tools: TeamCity, Jenkins
 
 ##Test scenario:
 
 ###Functional tests
-Each case: Make payment using specified card, currency
+Each case: Make payment
 Tests:
-1. Test Check reply
-2. Check used gw
+1. Check reply code
+2. Check reply message
 3. Check order data is in DB
-4. Check response from payment GW is in DB
+4. Check payment gateway
 
-|Case #:	|Card type		|Currency					|Reply		|Payment GW		|Check DB
-|1			|AMEX			|USD						|OK			|Paypal			|Yes
-|2-6		|AMEX			|EUR,THB,HKD,SGD,AUD		|Not OK		|n/a			|No
-|7-12		|VISA,MC		|USD,EUR,AUD				|OK			|Paypal			|Yes
-|13-18		|VISA,MC		|THB,HKD,SGD				|OK			|Braintree		|Yes
+There are 13 cases: 1 is for AmEx, VISA and MC have 6 each
 
 ###Negative tests
-Each case (1-36): Make payments trying all card type/currency combinations of amount 0 and -1
+Set of negative tests: wrong values in payload and 5 AmEx cases with improper currency
+Each case: Make payment
 Tests:
-1. Check reply (expect Not OK)
-
-
+1. Check reply code
+2. Check reply message
