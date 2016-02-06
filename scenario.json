@@ -1,52 +1,245 @@
 {
 	"uri": "http://michael-35411.herokuapp.com/api/payment",
-	"database": {
-		"host": "ds059215.mongolab.com",
-		"port": 59215,
-		"db": "heroku_ftfzdmb9",
-		"user": "heroku_ftfzdmb9",
-		"password": "48u7eotcssqek0i9sqq053dcdr"
-	},
+	"database": "mongodb://heroku_ftfzdmb9:48u7eotcssqek0i9sqq053dcdr@ds059215.mongolab.com:59215/heroku_ftfzdmb9",
 	"amex": {
-		"number": "377127687066544",
-		"expM": "03",
-		"expY": "2021",
+		"number": 377127687066544,
+		"expM": 3,
+		"expY": 2021,
 		"cvv": "",
 		"first name": "",
 		"last name": ""
 	},
 	"visa": {
-		"number": "4032039575052396",
-		"expM": "03",
-		"expY": "2021",
+		"number": 4032039575052396,
+		"expM": 3,
+		"expY": 2021,
 		"cvv": "",
 		"first name": "",
 		"last name": ""
 	},
 	"mc": {
-		"number": "5110927212387377",
-		"expM": "03",
-		"expY": "2021",
+		"number": 5110927212387377,
+		"expM": 3,
+		"expY": 2021,
 		"cvv": "",
 		"first name": "",
 		"last name": ""
 	},
 	"functional tests": [
 		{
-			"case": 1,
-			"card type": "amex",
+			"desc": "1. American Express, 1USD to Paypal",
+			"card": "amex",
 			"currency": "USD",
 			"amount": 1,
-			"expected": "201"
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "2. VISA, 1USD to Paypal",
+			"card": "visa",
+			"currency": "USD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "3. VISA, 1EUR to Paypal",
+			"card": "visa",
+			"currency": "EUR",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "4. VISA, 1AUD to Paypal",
+			"card": "visa",
+			"currency": "AUD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "5. VISA, 1THB to Braintree",
+			"card": "visa",
+			"currency": "THB",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
+		},
+		{
+			"desc": "6. VISA, 1SGD to Braintree",
+			"card": "visa",
+			"currency": "SGD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
+		},
+		{
+			"desc": "7. VISA, 1HKD to Braintree",
+			"card": "visa",
+			"currency": "HKD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
+		},
+		{
+			"desc": "8. MasterCard, 1USD to Paypal",
+			"card": "mc",
+			"currency": "USD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "9. MasterCard, 1EUR to Paypal",
+			"card": "mc",
+			"currency": "EUR",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "10. MasterCard, 1AUD to Paypal",
+			"card": "mc",
+			"currency": "AUD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "paypal"
+		},
+		{
+			"desc": "11. MasterCard, 1THB to Braintree",
+			"card": "mc",
+			"currency": "THB",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
+		},
+		{
+			"desc": "12. MasterCard, 1SGD to Braintree",
+			"card": "mc",
+			"currency": "SGD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
+		},
+		{
+			"desc": "13. MasterCard, 1HKD to Braintree",
+			"card": "mc",
+			"currency": "HKD",
+			"amount": 1,
+			"expect": 201,
+			"expectmsg": "",
+			"expectgw": "braintree"
 		}
 	],
 	"negative tests": [
 		{
-			"case": 1,
-			"card type": "amex",
+			"desc": "1. American Express, 1EUR fail",
+			"card": "amex",
+			"currency": "EUR",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "AMEX is possible to use only for USD"
+		},
+		{
+			"desc": "2. American Express, 1THB fail",
+			"card": "amex",
+			"currency": "THB",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "AMEX is possible to use only for USD"
+		},
+		{
+			"desc": "3. American Express, 1HKD fail",
+			"card": "amex",
+			"currency": "HKD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "AMEX is possible to use only for USD"
+		},
+		{
+			"desc": "4. American Express, 1SGD fail",
+			"card": "amex",
+			"currency": "SGD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "AMEX is possible to use only for USD"
+		},
+		{
+			"desc": "5. American Express, 1AUD fail",
+			"card": "amex",
+			"currency": "AUD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "AMEX is possible to use only for USD"
+		},
+		{
+			"desc": "6. Zero payment fail",
+			"card": "amex",
 			"currency": "USD",
 			"amount": 0,
-			"expected": ""
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "7. Negative payment fail",
+			"card": "amex",
+			"currency": "USD",
+			"amount": -1,
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "8. Unknown currency fail",
+			"card": "visa",
+			"currency": "RUB",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "9. Expired card fail",
+			"card": {"number": 377127687066544, "expM": 3, "expY": 2015, "cvv": "", "first name": "", "last name": ""},
+			"currency": "USD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "10. Wrong month fail",
+			"card": {"number": 377127687066544, "expM": 33, "expY": 2021, "cvv": "", "first name": "", "last name": ""},
+			"currency": "USD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "11. Wrong year fail",
+			"card": {"number": 377127687066544, "expM": 33, "expY": 21, "cvv": "", "first name": "", "last name": ""},
+			"currency": "USD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": ""
+		},
+		{
+			"desc": "12. Wrong CVV fail",
+			"card": {"number": 377127687066544, "expM": 33, "expY": 2021, "cvv": "***", "first name": "", "last name": ""},
+			"currency": "USD",
+			"amount": 1,
+			"expect": 500,
+			"expectmsg": "CVV must be 4 digits for American Express and 3 digits for other card types"
 		}
 	]
 }
