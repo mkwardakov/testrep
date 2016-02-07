@@ -1,11 +1,15 @@
-#HotelQuickly sample tests
+#HotelQuickly assignment
 
 ##Task description
-https://github.com/HQInterview/Backend-Automation-Test-Engineer
+The script covers payment library with automation tests
+
+For the details, see https://github.com/HQInterview/Backend-Automation-Test-Engineer
 
 ##Test environment
-* Linux with rvm
-* Ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-linux]
+Script is developed using environment below
+* Ubuntu Linux 14.04 LTS
+* [RVM 1.26.11] (https://rvm.io/)
+* Ruby 2.2.1
 * Used gems:
  * json 1.8.1
  * mongo 2.2.2
@@ -14,13 +18,23 @@ https://github.com/HQInterview/Backend-Automation-Test-Engineer
  * faker 1.6.1
  * logger 1.2.8
 
-## Running tests
-Test cases and all mandatory data is described in _scenario.json_
-Test are to be run via:
+##How to run
+To start testing, just use:
 ```
 rspec tests.rb
 ```
-Tests are ready to use in CI tools: TeamCity, Jenkins
+or
+```
+rspec tests.rb your_scenario.json
+```
+Test cases and all mandatory data is described in _scenario.json_ which is used by default if no json file is specified
+
+Tests are ready to use in CI tools: *TeamCity*, *Jenkins*
+
+###Work log
+The script writes work log to testrun.log using standard library.
+
+Log level is INFO
 
 ##Test scenario:
 

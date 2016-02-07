@@ -7,7 +7,7 @@ require 'mongo'
 require 'logger'
 
 logger = Logger.new('testrun.log')
-scenario = (ARGV.empty? || File.readable?(ARGV[0])) ? 'scenario.json' : ARGV[0] #If readable file is set to command line option, use it. Otherwise, default scenario.json
+scenario = (ARGV.empty? || ! File.readable?(ARGV[1])) ? 'scenario.json' : ARGV[1] #If readable file is set to command line option, use it. Otherwise, default scenario.json
 json = File.read(scenario) and $testData = JSON.parse(json) and $uri = $testData["uri"]
 Mongo::Logger.logger.level = ::Logger::WARN #Stop Mongo being noisy
 $dbConnect = Mongo::Client.new($testData["database"])
