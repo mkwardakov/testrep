@@ -1,6 +1,6 @@
 {
-	"uri": "http://michael-35411.herokuapp.com/api/payment",
-	"database": "mongodb://heroku_ftfzdmb9:48u7eotcssqek0i9sqq053dcdr@ds059215.mongolab.com:59215/heroku_ftfzdmb9",
+	"uri": "http://xxx.herokuapp.com/api/payment",
+	"database": "mongodb://heroku_xxx:xxxxxxxx.mongolab.com:59215/heroku_xxx",
 	"amex": {
 		"number": 377127687066544,
 		"expM": 3,
